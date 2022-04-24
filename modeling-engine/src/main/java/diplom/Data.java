@@ -23,7 +23,7 @@ public class Data {
     public static long hhhh = System.currentTimeMillis();
 
     public static Particle nullParticle = new Particle(0, 0, 0, 0, 0, 0);
-    public static Particle[] particles = new Particle[N];
+    public static Particle[] particles;
 
     public static void initStaticVariables() throws Exception {
         JSONObject jsonObject = (JSONObject) readJsonSimpleDemo("/home/vladimir/hobby-dev/modeling-engine/modeling-engine/src/main/resources/config.json");
@@ -40,6 +40,7 @@ public class Data {
         D = (int) (long) jsonObject.get("D");
         L = (double) jsonObject.get("L");
         V = Math.pow(L, 3);
+        particles = new Particle[N];
     }
 
     public static Object readJsonSimpleDemo(String filename) throws Exception {

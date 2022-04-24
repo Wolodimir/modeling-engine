@@ -6,9 +6,6 @@ import static diplom.Data.*;
 
 public class Space {
 
-    public static double L;
-    public double V;
-
     static public void borderConditions(int i) {
         if (true) { //граничные условия по оси Х
         } else if (true) {
@@ -56,24 +53,28 @@ public class Space {
             int WH = (int) Math.sqrt(N) + 1;
             for (int i = 0; i < WH; i++) {
                 for (int j = 0; j < WH; j++) {
-                    if (iter % 2 == 0) {
-                        particles[iter] = new Particle(
-                                ((i + 1) * L / WH) / 1.1,
-                                ((j + 1) * L / WH) / 1.1,
-                                0,
-                                10E4 / 2 - 10E3,
-                                10E4 / 2 - 10E3,
-                                0
-                        );
-                    } else {
-                        particles[iter] = new Particle(
-                                ((i + 1) * L / WH) / 1.1,
-                                ((j + 1) * L / WH) / 1.1,
-                                0,
-                                -10E4 / 2 - 10E3,
-                                -10E4 / 2 - 10E3,
-                                0
-                        );
+                    try {
+                        if (iter % 2 == 0) {
+                            particles[iter] = new Particle(
+                                    ((i + 1) * L / WH) / 1.1,
+                                    ((j + 1) * L / WH) / 1.1,
+                                    0,
+                                    10E4 / 2 - 10E3,
+                                    10E4 / 2 - 10E3,
+                                    0
+                            );
+                        } else {
+                            particles[iter] = new Particle(
+                                    ((i + 1) * L / WH) / 1.1,
+                                    ((j + 1) * L / WH) / 1.1,
+                                    0,
+                                    -10E4 / 2 - 10E3,
+                                    -10E4 / 2 - 10E3,
+                                    0
+                            );
+                        }
+                    } catch (Exception ignored) {
+
                     }
                     iter++;
                 }
