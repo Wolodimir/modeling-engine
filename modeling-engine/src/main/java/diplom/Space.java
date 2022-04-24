@@ -20,6 +20,9 @@ public class Space {
         }
     }
 
+    /**
+     * АЛГОРИТМ АРЗУМАНОВА-КРАМАРУХИ
+     * */
     static public void initialCoords(int D) {
         if (D == 1) {
             int iter = 0;
