@@ -76,9 +76,7 @@ public class Space {
                                     0
                             );
                         }
-                    } catch (Exception ignored) {
-
-                    }
+                    } catch (Exception ignored) {}
                     iter++;
                 }
             }
