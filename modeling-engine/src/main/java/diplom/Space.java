@@ -22,7 +22,7 @@ public class Space {
 
     /**
      * АЛГОРИТМ АРЗУМАНОВА-КРАМАРУХИ
-     * */
+     */
     static public void initialCoords(int D) {
         if (D == 1) {
             int iter = 0;
@@ -32,7 +32,7 @@ public class Space {
                             ((i + 1) * L / N) / 1.1,
                             0,
                             0,
-                            (10E4 / 2 - 10E3) * 5,
+                            10E4 / 2 - 10E3,
                             0,
                             0
                     );
@@ -41,7 +41,7 @@ public class Space {
                             ((i + 1) * L / N) / 1.1,
                             0,
                             0,
-                            -(10E4 / 2 - 10E3) * 5,
+                            -10E4 / 2 - 10E3,
                             0,
                             0
                     );
@@ -81,10 +81,37 @@ public class Space {
                 }
             }
         }
-        if (D == 3) {
-            int i = 0, j = 0, k = 0, iter = 0;
-            while (iter < N) {
 
+        if (D == 3) {
+            int iter = 0;
+            int WHD = (int) Math.cbrt(N) + 1;
+            for (int i = 0; i < WHD; i++) {
+                for (int j = 0; j < WHD; j++) {
+                    for (int k = 0; k < WHD; k++) {
+                        try {
+                            if (iter % 2 == 0) {
+                                particles[iter] = new Particle(
+                                        ((i + 1) * L / WHD) / 1.1,
+                                        ((j + 1) * L / WHD) / 1.1,
+                                        ((k + 1) * L / WHD) / 1.1,
+                                        10E3 / 2 - 10E3,
+                                        10E3 / 2 - 10E3,
+                                        10E3 / 2 - 10E3
+                                );
+                            } else {
+                                particles[iter] = new Particle(
+                                        ((i + 1) * L / WHD) / 1.1,
+                                        ((j + 1) * L / WHD) / 1.1,
+                                        ((k + 1) * L / WHD) / 1.1,
+                                        -10E3 / 2 - 10E3,
+                                        -10E3 / 2 - 10E3,
+                                        -10E3 / 2 - 10E3
+                                );
+                            }
+                        } catch (Exception ignored) {}
+                        iter++;
+                    }
+                }
             }
         }
     }
