@@ -7,16 +7,22 @@ import static diplom.Data.*;
 public class Space {
 
     static public void borderConditions(int i) {
-        if (true) { //граничные условия по оси Х
-        } else if (true) {
+        if (particles[i].x >= L) { //граничные условия по оси Х
+            particles[i].Vx = -particles[i].Vx;
+        } else if (particles[i].x <= 0) {
+            particles[i].Vx = -particles[i].Vx;
         }
 
-        if (true) { //граничные условия по оси Y
-        } else if (true) {
+        if (particles[i].y >= L) { //граничные условия по оси Y
+            particles[i].Vy = -particles[i].Vy;
+        } else if (particles[i].y <= 0) {
+            particles[i].Vy = -particles[i].Vy;
         }
 
-        if (true) { //граничные условия по оси Z
-        } else if (true) {
+        if (particles[i].z >= L) { //граничные условия по оси Z
+            particles[i].Vz = -particles[i].Vz;
+        } else if (particles[i].z <= 0) {
+            particles[i].Vz = -particles[i].Vz;
         }
     }
 
@@ -89,26 +95,16 @@ public class Space {
                 for (int j = 0; j < WHD; j++) {
                     for (int k = 0; k < WHD; k++) {
                         try {
-                            if (iter % 2 == 0) {
-                                particles[iter] = new Particle(
-                                        ((i + 1) * L / WHD) / 1.1,
-                                        ((j + 1) * L / WHD) / 1.1,
-                                        ((k + 1) * L / WHD) / 1.1,
-                                        10E3 / 2 - 10E3,
-                                        10E3 / 2 - 10E3,
-                                        10E3 / 2 - 10E3
-                                );
-                            } else {
-                                particles[iter] = new Particle(
-                                        ((i + 1) * L / WHD) / 1.1,
-                                        ((j + 1) * L / WHD) / 1.1,
-                                        ((k + 1) * L / WHD) / 1.1,
-                                        -10E3 / 2 - 10E3,
-                                        -10E3 / 2 - 10E3,
-                                        -10E3 / 2 - 10E3
-                                );
-                            }
-                        } catch (Exception ignored) {}
+                            particles[iter] = new Particle(
+                                    ((i + 1) * L / WHD) / 1.1,
+                                    ((j + 1) * L / WHD) / 1.1,
+                                    ((k + 1) * L / WHD) / 1.1,
+                                    Math.random() * 10E3 / 2 - 10E3,
+                                    Math.random() * 10E3 / 2 - 10E3,
+                                    Math.random() * 10E3 / 2 - 10E3
+                            );
+                        } catch (Exception ignored) {
+                        }
                         iter++;
                     }
                 }
