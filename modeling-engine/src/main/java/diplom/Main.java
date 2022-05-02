@@ -40,6 +40,7 @@ public class Main {
                 Space.borderConditions(i);
             }
             PowerAlgorithms.calcPowers();
+            //PowerAlgorithms.staticGrid();
 
             for (int i = 0; i < N; i++) {//определение скорости частиц
                 particles[i].Vx = particles[i].Vx + 0.5 * ((particles[i].Fx + particles[i].FxPrev) / m) * dt;
@@ -47,15 +48,15 @@ public class Main {
                 particles[i].Vz = particles[i].Vz + 0.5 * ((particles[i].Fz + particles[i].FzPrev) / m) * dt;
             }
 
-            System.out.println("--------" + k + "---------");
-            k = k + 1;
+            System.out.println("---------" + k + "---------");
+            k++;
 
             if (k % 1 == 0) {
                 Output.csvForGraphics(file, k);
             }
 
-            if (k == 50000) {
-                System.out.println("Время выполнения: " + (System.currentTimeMillis() - hhhh));
+            if (k == steps) {
+                System.out.println("Время выполнения: " + (double) (System.currentTimeMillis() - hhhh) / 1000 + "s");
                 break;
             }
         }
