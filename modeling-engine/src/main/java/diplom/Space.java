@@ -99,9 +99,9 @@ public class Space {
                                     ((i + 1) * L / WHD) / 1.1,
                                     ((j + 1) * L / WHD) / 1.1,
                                     ((k + 1) * L / WHD) / 1.1,
-                                    Math.random() * 10E3 / 2 - 10E3,
-                                    Math.random() * 10E3 / 2 - 10E3,
-                                    Math.random() * 10E3 / 2 - 10E3
+                                    Math.sqrt(3 * KB * T / m),
+                                    Math.sqrt(3 * KB * T / m),
+                                    Math.sqrt(3 * KB * T / m)
                             );
                         } catch (Exception ignored) {
                         }

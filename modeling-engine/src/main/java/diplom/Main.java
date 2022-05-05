@@ -51,9 +51,11 @@ public class Main {
             System.out.println("---------" + k + "---------");
             k++;
 
-            if (k % 1 == 0) {
-                Output.csvForGraphics(file, k);
-            }
+            //if (k > 900000) {
+                if (k % 1 == 0){
+                    Output.csvForGraphics(file, k);
+                }
+            //}
 
             if (k == steps) {
                 System.out.println("Время выполнения: " + (double) (System.currentTimeMillis() - hhhh) / 1000 + "s");
