@@ -24,7 +24,9 @@ public class PowerAlgorithms {
                     r = sqrt(pow((particles[i].x - particles[j].x), 2)
                             + pow((particles[i].y - particles[j].y), 2)
                             + pow((particles[i].z - particles[j].z), 2));
-                    f0 = (double) 48 * (EPS / SIG) * (FPF((SIG / r), 13) - 0.5 * FPF((SIG / r), 7));
+                    //f0 = (double) 48 * (EPS / SIG) * (FPF((SIG / r), 13) - 0.5 * FPF((SIG / r), 7));
+                    //48*epsilon/sigma^2*((sigma/r)^13-(sigma/r)^7)*r
+                    f0 = 48 * EPS / pow(SIG, 2) * (pow(SIG / r, 13) - pow(SIG / r, 7)) * r;
                     particles[i].Fx = particles[i].Fx + (f0 * (particles[i].x - particles[j].x) / r);
                     particles[i].Fy = particles[i].Fy + (f0 * (particles[i].y - particles[j].y) / r);
                     particles[i].Fz = particles[i].Fz + (f0 * (particles[i].z - particles[j].z) / r);

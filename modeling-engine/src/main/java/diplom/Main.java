@@ -32,10 +32,10 @@ public class Main {
             }
 
             for (int i = 0; i < N; i++) {
-                //это эйлер однако
-                particles[i].x = particles[i].x + particles[i].Vx * dt + (particles[i].FxPrev * pow(dt, 2) / (2 * m));
-                particles[i].y = particles[i].y + particles[i].Vy * dt + (particles[i].FyPrev * pow(dt, 2) / (2 * m));
-                particles[i].z = particles[i].z + particles[i].Vz * dt + (particles[i].FzPrev * pow(dt, 2) / (2 * m));
+                //sign(x2-x1)*F/m1
+                particles[i].x = particles[i].x + particles[i].Vx * dt + particles[i].x - * pow(dt, 2);
+                particles[i].y = particles[i].y + particles[i].Vy * dt + (particles[i].FyPrev * pow(dt, 2) / m);
+                particles[i].z = particles[i].z + particles[i].Vz * dt + (particles[i].FzPrev * pow(dt, 2) / m);
 
                 Space.borderConditions(i);
             }
