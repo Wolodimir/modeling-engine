@@ -12,13 +12,11 @@ public class Space {
         } else if (particles[i].x <= 0) {
             particles[i].Vx = -particles[i].Vx;
         }
-
         if (particles[i].y >= L) { //граничные условия по оси Y
             particles[i].Vy = -particles[i].Vy;
         } else if (particles[i].y <= 0) {
             particles[i].Vy = -particles[i].Vy;
         }
-
         if (particles[i].z >= L) { //граничные условия по оси Z
             particles[i].Vz = -particles[i].Vz;
         } else if (particles[i].z <= 0) {
