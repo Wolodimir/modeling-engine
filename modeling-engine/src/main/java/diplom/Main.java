@@ -19,7 +19,7 @@ public class Main {
         Data.initStaticVariables();
         Space.initialCoords(D);
         PowerAlgorithms.calcPowers();
-        //Запуск разных вычислительных алгоритмов
+        // Запуск разных вычислительных алгоритмов
         //StaticGrid.gridAlgorythm();
         emptySimulation();
     }
@@ -32,7 +32,7 @@ public class Main {
         File file1 = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
         file1.delete();
         File file = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
-        int k = 0;//счётчик шагов моделирования
+        int k = 0; // счётчик шагов моделирования
 
         for (double t = 0; t < time; t += dt) {
 
@@ -42,10 +42,10 @@ public class Main {
             System.out.println("---------" + k + "---------");
             k++;
 
-            //if (k > 900000) {
-            if (k % 1 == 0){
-                Output.csvForGraphics(file, k);
-            }
+            //if (k > 90000) {
+                if (k % 1 == 0){
+                    Output.csvForGraphics(file, k);
+                }
             //}
 
             if (k == steps) {
@@ -55,7 +55,7 @@ public class Main {
         }
     }
 
-    //Метод, запускающий потоки с методом upTheCycles
+    // Метод, запускающий потоки с методом upTheCycles
     static public void threadingCulcPowers() throws InterruptedException {
         Thread1 thread1 = new Thread1();
         Thread2 thread2 = new Thread2();

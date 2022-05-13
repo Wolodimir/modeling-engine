@@ -1,6 +1,6 @@
 package diplom;
 
-import java.util.WeakHashMap;
+import java.util.Random;
 
 import static diplom.Data.*;
 
@@ -28,6 +28,10 @@ public class Space {
      * АЛГОРИТМ АРЗУМАНОВА-КРАМАРУХИ
      */
     static public void initialCoords(int D) {
+        Random random = new Random();
+        random.nextGaussian();
+        double Vm = Math.sqrt(8 * KB * T / (Math.PI * m));
+
         if (D == 1) {
             int iter = 0;
             for (int i = 0; i < N; i++) {
@@ -36,7 +40,7 @@ public class Space {
                             ((i + 1) * L / N) / 1.1,
                             0,
                             0,
-                            10E4 / 2 - 10E3,
+                            Vm * (random.nextGaussian()),
                             0,
                             0
                     );
@@ -45,7 +49,7 @@ public class Space {
                             ((i + 1) * L / N) / 1.1,
                             0,
                             0,
-                            -10E4 / 2 - 10E3,
+                            Vm * (random.nextGaussian()),
                             0,
                             0
                     );
@@ -66,8 +70,8 @@ public class Space {
                                     ((i + 1) * L / WH) / 1.1,
                                     ((j + 1) * L / WH) / 1.1,
                                     0,
-                                    10E4 / 2 - 10E3,
-                                    10E4 / 2 - 10E3,
+                                    Vm * (random.nextGaussian()),
+                                    Vm * (random.nextGaussian()),
                                     0
                             );
                         } else {
@@ -75,8 +79,8 @@ public class Space {
                                     ((i + 1) * L / WH) / 1.1,
                                     ((j + 1) * L / WH) / 1.1,
                                     0,
-                                    -10E4 / 2 - 10E3,
-                                    -10E4 / 2 - 10E3,
+                                    Vm * (random.nextGaussian()),
+                                    Vm * (random.nextGaussian()),
                                     0
                             );
                         }
@@ -97,9 +101,9 @@ public class Space {
                                     ((i + 1) * L / WHD) / 1.1,
                                     ((j + 1) * L / WHD) / 1.1,
                                     ((k + 1) * L / WHD) / 1.1,
-                                    Math.sqrt(3 * KB * T / m),
-                                    Math.sqrt(3 * KB * T / m),
-                                    Math.sqrt(3 * KB * T / m)
+                                    Vm * (random.nextGaussian()),
+                                    Vm * (random.nextGaussian()),
+                                    Vm * (random.nextGaussian())
                             );
                         } catch (Exception ignored) {
                         }
