@@ -48,7 +48,7 @@ public class StaticGrid {
 
             //if (k > 900000) {
             if (k % 1 == 0){
-                Output.csvForGraphics(file, k);
+                Output.csvFor3D(file, k);
             }
             //}
 

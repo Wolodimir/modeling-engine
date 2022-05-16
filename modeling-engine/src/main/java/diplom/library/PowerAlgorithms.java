@@ -10,10 +10,33 @@ import static java.lang.Math.sqrt;
 
 public class PowerAlgorithms {
 
+    public static void calcPowers() {
+        double r;
+        double f0;
+
+        for (int i = 0; i < N; ++i) {
+            particles[i].Fx = 0;
+            particles[i].Fy = 0;
+            particles[i].Fz = 0;
+            for (int j = 0; j < N; ++j) {
+                if (i != j) {
+                    r = sqrt(FPF((particles[i].x - particles[j].x), 2)
+                            + FPF((particles[i].y - particles[j].y), 2)
+                            + FPF((particles[i].z - particles[j].z), 2));
+                    f0 = (48 * EPS / FPF(SIG, 2) * (FPF(SIG / r, 13) - FPF(SIG / r, 7)) * r)/* * 10E-8*/;
+                    particles[i].Fx = particles[i].Fx + (f0 * (particles[i].x - particles[j].x) / r);
+                    particles[i].Fy = particles[i].Fy + (f0 * (particles[i].y - particles[j].y) / r);
+                    particles[i].Fz = particles[i].Fz + (f0 * (particles[i].z - particles[j].z) / r);
+                }
+            }
+        }
+    }
+
     /**
      * В этом методе объединены все вычисления, которые проводятся с частицей. Удобен для разделения
      * на потоки, чтения и анализа.
      * */
+    @Deprecated
     public static void upTheCycles() {
         double r;
         double f0;
@@ -58,7 +81,7 @@ public class PowerAlgorithms {
         }
     }
 
-    public static void el() {
+    public static void EilerAlg() {
         double r;
         double f0;
 
@@ -91,30 +114,4 @@ public class PowerAlgorithms {
         }
     }
 
-    /**
-     * Самый старый метод. Содержит в себе только вычисление сил.
-     * Используется только на старте, оставлен скорее на всякий случай.
-     * */
-    @Deprecated
-    public static void calcPowers() {
-        double r;
-        double f0;
-
-        for (int i = 0; i < N; ++i) {
-            particles[i].Fx = 0;
-            particles[i].Fy = 0;
-            particles[i].Fz = 0;
-            for (int j = 0; j < N; ++j) {
-                if (i != j) {
-                    r = sqrt(FPF((particles[i].x - particles[j].x), 2)
-                            + FPF((particles[i].y - particles[j].y), 2)
-                            + FPF((particles[i].z - particles[j].z), 2));
-                    f0 = (48 * EPS / FPF(SIG, 2) * (FPF(SIG / r, 13) - FPF(SIG / r, 7)) * r)/* * 10E-8*/;
-                    particles[i].Fx = particles[i].Fx + (f0 * (particles[i].x - particles[j].x) / r);
-                    particles[i].Fy = particles[i].Fy + (f0 * (particles[i].y - particles[j].y) / r);
-                    particles[i].Fz = particles[i].Fz + (f0 * (particles[i].z - particles[j].z) / r);
-                }
-            }
-        }
-    }
 }
