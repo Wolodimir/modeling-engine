@@ -21,7 +21,9 @@ public class Main {
         PowerAlgorithms.calcPowers();
         // Запуск разных вычислительных алгоритмов
         //StaticGrid.gridAlgorythm();
-        emptySimulation();
+        //emptySimulation();
+        gridAlgorythm();
+
     }
     /**
      * Вычисления скоростей и координат были объединены с силами,
@@ -38,13 +40,14 @@ public class Main {
 
             PowerAlgorithms.upTheCycles();
             //threadingCulcPowers();
+            //PowerAlgorithms.el();
 
             System.out.println("---------" + k + "---------");
             k++;
 
-            //if (k > 90000) {
+            //if (k > 100000) {
                 if (k % 1 == 0){
-                    Output.csvForGraphics(file, k);
+                    Output.csvFor3D(file, k);
                 }
             //}
 
@@ -89,6 +92,52 @@ public class Main {
         thread8.join();
         thread9.join();
         thread10.join();
+    }
+
+
+
+    public static void gridAlgorythm() throws IOException, InterruptedException {
+        File file1 = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
+        file1.delete();
+        File file = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
+        int k = 0;//счётчик шагов моделирования
+
+        for (double t = 0; t < time; t += dt) {
+            for (int i = 0; i < N; i++) {
+                particles[i].FxPrev = particles[i].Fx;
+                particles[i].FyPrev = particles[i].Fy;
+                particles[i].FzPrev = particles[i].Fz;
+            }
+
+            for (int i = 0; i < N; i++) {
+                particles[i].x = particles[i].x + particles[i].Vx * dt + (particles[i].FxPrev * pow(dt, 2) / (2 * m));
+                particles[i].y = particles[i].y + particles[i].Vy * dt + (particles[i].FyPrev * pow(dt, 2) / (2 * m));
+                particles[i].z = particles[i].z + particles[i].Vz * dt + (particles[i].FzPrev * pow(dt, 2) / (2 * m));
+
+                Space.borderConditions(i);
+            }
+            PowerAlgorithms.calcPowers();
+
+            for (int i = 0; i < N; i++) {//определение скорости частиц
+                particles[i].Vx = particles[i].Vx + 0.5 * ((particles[i].Fx + particles[i].FxPrev) / m) * dt;
+                particles[i].Vy = particles[i].Vy + 0.5 * ((particles[i].Fy + particles[i].FyPrev) / m) * dt;
+                particles[i].Vz = particles[i].Vz + 0.5 * ((particles[i].Fz + particles[i].FzPrev) / m) * dt;
+            }
+
+            System.out.println("---------" + k + "---------");
+            k++;
+
+            //if (k > 4900000) {
+                if (k % 1 == 0){
+                    Output.csvFor3D(file, k);
+                }
+            //}
+
+            if (k == steps) {
+                System.out.println("Время выполнения: " + (double) (System.currentTimeMillis() - hhhh) / 1000 + "s");
+                break;
+            }
+        }
     }
 
 
