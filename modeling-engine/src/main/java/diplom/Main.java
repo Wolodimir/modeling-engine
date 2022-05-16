@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static diplom.Data.*;
+import static diplom.Data.k;
 import static java.lang.Math.pow;
 
 public class Main {
@@ -20,7 +21,8 @@ public class Main {
         PowerAlgorithms.calcPowers();
         // Запуск разных вычислительных алгоритмов
         //emptySimulation();
-        mainCycle();
+        //mainCycle();
+        multy();
 
     }
 
@@ -28,9 +30,8 @@ public class Main {
         File file1 = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
         file1.delete();
         File file = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
-        int k = 0;//счётчик шагов моделирования
 
-        for (double t = 0; t < time; t += dt) {
+        for (; t < time; t += dt) {
             for (int i = 0; i < N; i++) {
                 particles[i].FxPrev = particles[i].Fx;
                 particles[i].FyPrev = particles[i].Fy;
@@ -55,11 +56,35 @@ public class Main {
             System.out.println("---------" + k + "---------");
             k++;
 
-            if (k > 49990000) {
+            //if (k > 49990000) {
                 if (k % 1 == 0){
                     Output.csvFor3D(file, k);
                 }
+            //}
+
+            if (k == steps) {
+                System.out.println("Время выполнения: " + (double) (System.currentTimeMillis() - hhhh) / 1000 + "s");
+                break;
             }
+        }
+    }
+
+    public static void multy() throws IOException, InterruptedException {
+        File file1 = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
+        file1.delete();
+        File file = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
+
+        for (; t < time; t += dt) {
+            //PowerAlgorithms.calcEverything();
+            threadingCulcPowers();
+
+            //if (k > 49990000) {
+                if (k % 1 == 0){
+                    Output.csvFor3D(file, k);
+                }
+            //}
+            k++;
+            System.out.println("---------" + k + "---------");
 
             if (k == steps) {
                 System.out.println("Время выполнения: " + (double) (System.currentTimeMillis() - hhhh) / 1000 + "s");

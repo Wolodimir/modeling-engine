@@ -7,6 +7,9 @@ import java.io.FileReader;
 
 public class Data {
 
+    public static double t = 0;
+    public static int k = 0;
+
     public static int N;
     public static double time;
     public static double dt;

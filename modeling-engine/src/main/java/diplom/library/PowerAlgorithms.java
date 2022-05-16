@@ -32,6 +32,28 @@ public class PowerAlgorithms {
         }
     }
 
+    public static void calcEverything() {
+
+        for (int i = 0; i < N; i++) {
+            particles[i].FxPrev = particles[i].Fx;
+            particles[i].FyPrev = particles[i].Fy;
+            particles[i].FzPrev = particles[i].Fz;
+
+            particles[i].x = particles[i].x + particles[i].Vx * dt + 0.5 * (particles[i].FxPrev * pow(dt, 2) / m);
+            particles[i].y = particles[i].y + particles[i].Vy * dt + 0.5 * (particles[i].FyPrev * pow(dt, 2) / m);
+            particles[i].z = particles[i].z + particles[i].Vz * dt + 0.5 * (particles[i].FzPrev * pow(dt, 2) / m);
+
+            Space.borderConditions(i);
+        }
+        PowerAlgorithms.calcPowers();
+
+        for (int i = 0; i < N; i++) {//определение скорости частиц
+            particles[i].Vx = particles[i].Vx + 0.5 * ((particles[i].Fx + particles[i].FxPrev) / m) * dt;
+            particles[i].Vy = particles[i].Vy + 0.5 * ((particles[i].Fy + particles[i].FyPrev) / m) * dt;
+            particles[i].Vz = particles[i].Vz + 0.5 * ((particles[i].Fz + particles[i].FzPrev) / m) * dt;
+        }
+    }
+
     /**
      * В этом методе объединены все вычисления, которые проводятся с частицей. Удобен для разделения
      * на потоки, чтения и анализа.
