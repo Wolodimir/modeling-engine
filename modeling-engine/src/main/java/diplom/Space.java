@@ -35,25 +35,13 @@ public class Space {
         if (D == 1) {
             int iter = 0;
             for (int i = 0; i < N; i++) {
-                if (i % 2 == 0) {
-                    particles[iter] = new Particle(
-                            ((i + 1) * L / N) / 1.1,
-                            0,
-                            0,
-                            Vm * (random.nextGaussian()),
-                            0,
-                            0
-                    );
-                } else {
-                    particles[iter] = new Particle(
-                            ((i + 1) * L / N) / 1.1,
-                            0,
-                            0,
-                            Vm * (random.nextGaussian()),
-                            0,
-                            0
-                    );
-                }
+                particles[iter] = new Particle(
+                        ((i + 1) * L / N) / 1.1,
+                        0,
+                        0,
+                        Vm * (random.nextGaussian()),
+                        0,
+                        0);
 
                 iter++;
             }
@@ -65,26 +53,16 @@ public class Space {
             for (int i = 0; i < WH; i++) {
                 for (int j = 0; j < WH; j++) {
                     try {
-                        if (iter % 2 == 0) {
-                            particles[iter] = new Particle(
-                                    ((i + 1) * L / WH) / 1.1,
-                                    ((j + 1) * L / WH) / 1.1,
-                                    0,
-                                    Vm * (random.nextGaussian()),
-                                    Vm * (random.nextGaussian()),
-                                    0
-                            );
-                        } else {
-                            particles[iter] = new Particle(
-                                    ((i + 1) * L / WH) / 1.1,
-                                    ((j + 1) * L / WH) / 1.1,
-                                    0,
-                                    Vm * (random.nextGaussian()),
-                                    Vm * (random.nextGaussian()),
-                                    0
-                            );
-                        }
-                    } catch (Exception ignored) {}
+                        particles[iter] = new Particle(
+                                ((i + 1) * L / WH) / 1.1,
+                                ((j + 1) * L / WH) / 1.1,
+                                0,
+                                Vm * (random.nextGaussian()),
+                                Vm * (random.nextGaussian()),
+                                0
+                        );
+                    } catch (Exception ignored) {
+                    }
                     iter++;
                 }
             }
