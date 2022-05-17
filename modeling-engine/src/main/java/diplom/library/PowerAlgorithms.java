@@ -23,10 +23,12 @@ public class PowerAlgorithms {
                     r = sqrt(FPF((particles[i].x - particles[j].x), 2)
                             + FPF((particles[i].y - particles[j].y), 2)
                             + FPF((particles[i].z - particles[j].z), 2));
-                    f0 = (48 * EPS / FPF(SIG, 2) * (FPF(SIG / r, 13) - FPF(SIG / r, 7)) * r)/* * 10E-8*/;
+                    f0 = 48 * EPS / FPF(SIG, 2) * (FPF(SIG / r, 13) - FPF(SIG / r, 7)) * r;
                     particles[i].Fx = particles[i].Fx + (f0 * (particles[i].x - particles[j].x) / r);
                     particles[i].Fy = particles[i].Fy + (f0 * (particles[i].y - particles[j].y) / r);
                     particles[i].Fz = particles[i].Fz + (f0 * (particles[i].z - particles[j].z) / r);
+                    /*pot = 4 * EPS * (pow((SIG / r), 12) - pow((SIG / r), 6));
+                    kin = pow((m * particles[0].Vx), 2) / 2 + pow((m * particles[1].Vx), 2) / 2;*/
                 }
             }
         }

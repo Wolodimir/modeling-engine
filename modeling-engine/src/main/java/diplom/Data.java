@@ -7,8 +7,16 @@ import java.io.FileReader;
 
 public class Data {
 
+    /**
+     * Размер куба для 100 частиц = 10E-9 (10 нанометров при нашем алгоритме начальных координат)
+     * Размер куба для 1000 частиц = 17E-9 (17 нанометров при нашем алгоритме начальных координат)
+     * */
+
     public static double t = 0;
     public static int k = 0;
+
+    public static double kin;
+    public static double pot;
 
     public static int N;
     public static double time;

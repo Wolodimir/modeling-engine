@@ -4,8 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static diplom.Data.N;
-import static diplom.Data.particles;
+import static diplom.Data.*;
 
 public class Output {
 
@@ -24,6 +23,13 @@ public class Output {
             fw.write(particles[i].x + "," + particles[i].y + "," + particles[i].z + "\n");
         }
         fw.write("step \n");
+        fw.close();
+    }
+
+    public static void csvKinAndPotEnergy(File file, int step) throws IOException {
+        FileWriter fw = new FileWriter(file, true);
+        fw.write(step + ","+ kin + "," + pot + "\n");
+        //fw.write("step \n");
         fw.close();
     }
 }

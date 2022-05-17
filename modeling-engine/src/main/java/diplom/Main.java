@@ -5,6 +5,7 @@ import diplom.output.Output;
 import diplom.threads.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import static diplom.Data.*;
@@ -74,13 +75,18 @@ public class Main {
         file1.delete();
         File file = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
 
-        for (; t < time; t += dt) {
-            //PowerAlgorithms.calcEverything();
-            threadingCulcPowers();
+        FileWriter fw = new FileWriter(file, true);
+        fw.write("\"step\",\"Kin\",\"Pot\"" + "\n");
+        fw.close();
 
-            //if (k > 49990000) {
+        for (; t < time; t += dt) {
+            PowerAlgorithms.calcEverything();
+            //threadingCulcPowers();
+
+            //if (k > 90000) {
                 if (k % 1 == 0){
-                    Output.csvFor3D(file, k);
+                    //Output.csvFor3D(file, k);
+                    Output.csvKinAndPotEnergy(file, k);
                 }
             //}
             k++;

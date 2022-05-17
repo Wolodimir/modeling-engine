@@ -76,9 +76,9 @@ public class Space {
                     for (int k = 0; k < WHD; k++) {
                         try {
                             particles[iter] = new Particle(
-                                    ((i + 1) * (L - 2E-9) / WHD) * 1.1,
-                                    ((j + 1) * (L - 2E-9) / WHD) * 1.1,
-                                    ((k + 1) * (L - 2E-9) / WHD) * 1.1,
+                                    ((i + 1) * (L - 1E-9) / WHD) * 1.2,
+                                    ((j + 1) * (L - 1E-9) / WHD) * 1.2,
+                                    ((k + 1) * (L - 1E-9) / WHD) * 1.2,
                                     Vm * (random.nextGaussian()),
                                     Vm * (random.nextGaussian()),
                                     Vm * (random.nextGaussian())
