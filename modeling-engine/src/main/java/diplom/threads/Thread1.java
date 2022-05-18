@@ -1,7 +1,6 @@
 package diplom.threads;
 
 import diplom.Space;
-import diplom.library.PowerAlgorithms;
 
 import static diplom.Data.*;
 import static diplom.Data.dt;

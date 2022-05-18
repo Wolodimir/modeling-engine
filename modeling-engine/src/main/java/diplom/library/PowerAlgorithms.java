@@ -57,35 +57,17 @@ public class PowerAlgorithms {
     }
 
     public static void Eiler() {
-        double r;
-        double f0;
+        PowerAlgorithms.calcPowers();
 
-        for (int i = 0; i < N; ++i) {
-            //Отчищаем место для новых сил
-            particles[i].Fx = 0;
-            particles[i].Fy = 0;
-            particles[i].Fz = 0;
-
-            //Проводим анализ взаимодействия со всеми частицами в системе, по очереди
-            for (int j = 0; j < N; ++j) {
-                if (i != j) {
-                    r = sqrt(FPF((particles[i].x - particles[j].x), 2)
-                            + FPF((particles[i].y - particles[j].y), 2)
-                            + FPF((particles[i].z - particles[j].z), 2));
-                    f0 = (48 * EPS / FPF(SIG, 2) * (FPF(SIG / r, 13) - FPF(SIG / r, 7)) * r)/* * 10E-8*/;
-                    particles[i].Fx = particles[i].Fx + (f0 * (particles[i].x - particles[j].x) / r);
-                    particles[i].Fy = particles[i].Fy + (f0 * (particles[i].y - particles[j].y) / r);
-                    particles[i].Fz = particles[i].Fz + (f0 * (particles[i].z - particles[j].z) / r);
-                }
-            }
+        for (int i = 0; i < N; i++) {
             particles[i].Vx = particles[i].Vx + (particles[i].Fx / m) * dt;
             particles[i].Vy = particles[i].Vy + (particles[i].Fy / m) * dt;
             particles[i].Vz = particles[i].Vz + (particles[i].Fz / m) * dt;
-            //Рассчитываем положение частиц (Формулу уточнить)
+        }
+        for (int i = 0; i < N; i++) {
             particles[i].x = particles[i].x + particles[i].Vx * dt;
             particles[i].y = particles[i].y + particles[i].Vy * dt;
             particles[i].z = particles[i].z + particles[i].Vz * dt;
-            //Учитываем стенки куба
             Space.borderConditions(i);
         }
     }

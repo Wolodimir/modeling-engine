@@ -30,7 +30,8 @@ public class Main {
 
         for (; t < time; t += dt) {
             //PowerAlgorithms.Verlet();
-            threadingCacl();
+            //PowerAlgorithms.Eiler();
+            threadingCalc();
 
             if (k > recordLast) {
                 if (k % 1 == 0){
@@ -49,7 +50,7 @@ public class Main {
     }
 
     // Метод, запускающий потоки
-    static public void threadingCacl() throws InterruptedException {
+    static public void threadingCalc() throws InterruptedException {
         Thread1 thread1 = new Thread1();
         Thread2 thread2 = new Thread2();
         Thread3 thread3 = new Thread3();
