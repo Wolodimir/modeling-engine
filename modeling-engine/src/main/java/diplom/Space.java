@@ -29,14 +29,13 @@ public class Space {
      */
     static public void initialCoords(int D) {
         Random random = new Random();
-        random.nextGaussian();
         double Vm = Math.sqrt(8 * KB * T / (Math.PI * m));
 
         if (D == 1) {
             int iter = 0;
             for (int i = 0; i < N; i++) {
                 particles[iter] = new Particle(
-                        ((i + 1) * L / N) / 1.1,
+                        ((i + 1) * (L - 1E-9) / N) * 1.2,
                         0,
                         0,
                         Vm * (random.nextGaussian()),
@@ -54,8 +53,8 @@ public class Space {
                 for (int j = 0; j < WH; j++) {
                     try {
                         particles[iter] = new Particle(
-                                ((i + 1) * L / WH) / 1.1,
-                                ((j + 1) * L / WH) / 1.1,
+                                ((i + 1) * (L - 1E-9) / WH) * 1.2,
+                                ((i + 1) * (L - 1E-9) / WH) * 1.2,
                                 0,
                                 Vm * (random.nextGaussian()),
                                 Vm * (random.nextGaussian()),

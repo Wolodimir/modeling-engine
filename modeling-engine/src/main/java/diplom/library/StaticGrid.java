@@ -1,5 +1,6 @@
 package diplom.library;
 
+import diplom.Particle;
 import diplom.Space;
 import diplom.output.Output;
 
@@ -7,11 +8,21 @@ import java.io.File;
 import java.io.IOException;
 
 import static diplom.Data.*;
-import static diplom.Data.grid;
 import static diplom.library.ExternalFunctions.FPF;
 import static java.lang.Math.pow;
 
+/**
+ * Данный класс содержит в себе наработки по применению алгоритма "Статическая сеть"
+ * Вычисления данного алгоритма нужно настраивать.
+ * */
+@Deprecated
 public class StaticGrid {
+
+    //Переменные ниже нужны только для применения алгоритма "Статическая сеть"
+    public static Particle nullParticle = new Particle(0, 0, 0, 0, 0, 0);
+    public static int gridLength = (int) Math.cbrt(N) + 15;
+    public static Particle[][][] grid = new Particle[gridLength][gridLength][gridLength];
+    public static double gridDist = 3E-9;
 
     //Метод, для применения алгоритма "Статическая сеть"
     public static void gridAlgorythm() throws IOException, InterruptedException {

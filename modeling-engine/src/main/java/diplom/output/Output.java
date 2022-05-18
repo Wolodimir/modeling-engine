@@ -8,6 +8,23 @@ import static diplom.Data.*;
 
 public class Output {
 
+    public static File createFileForDraw() {
+        File file1 = new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
+        file1.delete();
+
+        return new File("/home/vladimir/hobby-dev/particles-engine/files/coords.csv");
+    }
+
+    public static File createFileForGraphics() throws IOException {
+        File file = new File("/home/vladimir/hobby-dev/particles-engine/files/graph.csv");
+
+        FileWriter fw = new FileWriter(file, true);
+        fw.write("\"step\",\"Kin\",\"Pot\"" + "\n");
+        fw.close();
+
+        return file;
+    }
+
     public static void csvFor3D(File file, int k) throws IOException {
         FileWriter fw = new FileWriter(file, true);
         for (int i = 0; i < N; i++) {

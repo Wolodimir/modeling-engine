@@ -35,11 +35,6 @@ public class Data {
     public static long hhhh = System.currentTimeMillis();
 
     public static Particle[] particles;
-    //Переменные ниже нужны только для применения алгоритма "Статическая сеть"
-    public static Particle nullParticle = new Particle(0, 0, 0, 0, 0, 0);
-    public static int gridLength;
-    public static Particle[][][] grid;
-    public static double gridDist = 3E-9;
 
     public static void initStaticVariables() throws Exception {
         JSONObject jsonObject = (JSONObject) readJsonSimpleDemo("/home/vladimir/hobby-dev/modeling-engine/modeling-engine/src/main/resources/config.json");
@@ -59,8 +54,6 @@ public class Data {
         steps = (int) (long) jsonObject.get("steps");
 
         particles = new Particle[N];
-        gridLength = (int) Math.cbrt(N) + 15;
-        grid = new Particle[gridLength][gridLength][gridLength];
     }
 
     public static Object readJsonSimpleDemo(String filename) throws Exception {
