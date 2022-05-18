@@ -31,6 +31,8 @@ public class Data {
     public static double L;
     public static int D;
     public static int steps;
+    public static int recordLast;
+    public static int threadArea;
 
     public static long hhhh = System.currentTimeMillis();
 
@@ -52,8 +54,13 @@ public class Data {
         L = (double) jsonObject.get("L");
         V = Math.pow(L, 3);
         steps = (int) (long) jsonObject.get("steps");
+        recordLast = (int) (long) jsonObject.get("recordLast");
 
+        if (recordLast != 0) {
+            recordLast = steps - recordLast;
+        }
         particles = new Particle[N];
+        threadArea = N / 10;
     }
 
     public static Object readJsonSimpleDemo(String filename) throws Exception {

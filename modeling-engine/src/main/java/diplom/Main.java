@@ -29,15 +29,15 @@ public class Main {
         File graphFile = Output.createFileForGraphics();
 
         for (; t < time; t += dt) {
-            PowerAlgorithms.Verlet();
-            //threadingCacl();
+            //PowerAlgorithms.Verlet();
+            threadingCacl();
 
-            //if (k > 90000) {
+            if (k > recordLast) {
                 if (k % 1 == 0){
                     Output.csvFor3D(drawFile, k);
-                    Output.csvKinAndPotEnergy(graphFile, k);
+                    //Output.csvKinAndPotEnergy(graphFile, k);
                 }
-            //}
+            }
 
             k++;
             System.out.println("---------" + k + "---------");

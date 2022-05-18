@@ -27,8 +27,8 @@ public class PowerAlgorithms {
                     particles[i].Fx = particles[i].Fx + (f0 * (particles[i].x - particles[j].x) / r);
                     particles[i].Fy = particles[i].Fy + (f0 * (particles[i].y - particles[j].y) / r);
                     particles[i].Fz = particles[i].Fz + (f0 * (particles[i].z - particles[j].z) / r);
-                    pot = 4 * EPS * (pow((SIG / r), 12) - pow((SIG / r), 6));
-                    kin = pow((m * particles[i].Vx), 2) / 2 + pow((m * particles[j].Vx), 2) / 2;
+                    /*pot = 4 * EPS * (pow((SIG / r), 12) - pow((SIG / r), 6));
+                    kin = pow((m * particles[i].Vx), 2) / 2 + pow((m * particles[j].Vx), 2) / 2;*/
                 }
             }
         }

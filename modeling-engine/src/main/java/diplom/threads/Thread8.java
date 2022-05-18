@@ -8,8 +8,8 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class Thread8 extends Thread{
-    private int startFrom = 700;
-    private int endIn = 800;
+    private int startFrom = threadArea * 7;
+    private int endIn = threadArea * 8;
 
     @Override
     public void run() {

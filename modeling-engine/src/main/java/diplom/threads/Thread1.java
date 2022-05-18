@@ -11,7 +11,7 @@ import static java.lang.Math.sqrt;
 
 public class Thread1 extends Thread{
     private int startFrom = 0;
-    private int endIn = 100;
+    private int endIn = threadArea;
 
     @Override
     public void run() {
